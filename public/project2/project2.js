@@ -297,7 +297,7 @@ function changeAngles(theta_1, theta_2, theta_3) {
     -moz-transform: rotate("+theta_3+"deg); \
     -ms-transform: rotate("+theta_3+"deg); \
     -o-transform: rotate("+theta_3+"deg); \
-    transform: rotate("+theta_3+"deg); \
+    transform: rotate("+theta_3+"deg);\
     ";
     
     links[0].style.cssText = joint1css;
