@@ -126,6 +126,7 @@ function validate(vertical, horizontal) {
 	return vertical*vertical + horizontal*horizontal <= totalLength*totalLength;
 }
 
+// Gets the x and y of the base point (the relative origin).
 function getBasePoint() {
 	var base = document.getElementById('base-pos').getBoundingClientRect();
 	var x_coord = (base.left + 0.5*base.width);
@@ -133,6 +134,7 @@ function getBasePoint() {
 	return { x: x_coord, y: y_coord }
 }
 
+// Gets the location of the tip relative to the base point.
 function getTipOffsetFromBasePoint() {
 	var tip = document.getElementById('tip').getBoundingClientRect();
 	var base = document.getElementById('base-pos').getBoundingClientRect();
@@ -142,6 +144,7 @@ function getTipOffsetFromBasePoint() {
 	return { x: x_coord, y: y_coord }
 }
 
+// Translates vertically with inverse kinematics.
 function verticalTranslation(n) {
     var tip = document.getElementById('link3');
 	var base = document.getElementById('link1');
@@ -162,6 +165,7 @@ function verticalTranslation(n) {
 	}
 }
 
+// Translates horizontally with inverse kinematics.
 function horizontalTranslation(n) {
     var tip = document.getElementById('link3');
 	var base = document.getElementById('link1');
@@ -182,10 +186,12 @@ function horizontalTranslation(n) {
 	}
 }
 
+// Stops a translation.
 function stopTranslation() {
 
 }
 
+// Computes the angles for inverse kinematics.
 function inverseKinematics(x_tip, y_tip) {
 	//Length of each links
     var link1 = document.getElementById("link1").clientWidth;
