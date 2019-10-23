@@ -193,10 +193,12 @@ function stopTranslation() {
 
 // Computes the angles for inverse kinematics.
 function inverseKinematics(x_tip, y_tip) {
+	console.log("========== PRESSED BUTTON ===========");
+
 	//Length of each links
-    var link1 = document.getElementById("link1").clientWidth;
-    var link2 = document.getElementById("link2").clientWidth;
-    var link3 = document.getElementById("link3").clientWidth;
+    var link1 = document.getElementById("link1").clientWidth; // 150
+    var link2 = document.getElementById("link2").clientWidth; // 100
+    var link3 = document.getElementById("link3").clientWidth; // 75
 
     //The X and Y location of the base
     var basePoint = getBasePoint();
@@ -206,9 +208,9 @@ function inverseKinematics(x_tip, y_tip) {
 	
 	// Desired angle for the end effector:
     //var phi = 90; // (Wouldn't we want the angle of the last arm?)
-	var phi = getCurrentAngle(links[2]); // Should be in degrees
+	var phi = Math.atan2(y_tip, x_tip); // getCurrentAngle(links[2]); // Should be in degrees
 	console.log("Last joint phi:", phi);
-    phi = phi * (Math.PI/180);
+    // phi = phi * (Math.PI/180);
 	console.log("phi in radians:", phi);
 
     //Inverse kinematics calculations from this point down
@@ -243,6 +245,25 @@ function inverseKinematics(x_tip, y_tip) {
 	// it's not necessary for now.
 	
 	// TODO: Set these angles to the link pieces
+	
+	changeAngle(3, (theta_3 * (180/Math.PI)));
+	changeAngle(2, (theta_2 * (180/Math.PI)));
+	changeAngle(1, (theta_1 * (180/Math.PI)));
+}
+
+// Sets the angle of the given link to the given angle.
+// "link" is the link number
+// "theta" is the angle in DEGREES
+function changeAngle(link, theta) {
+    var jointcss = "\
+    -webkit-transform: rotate("+theta+"deg); \
+    -moz-transform: rotate("+theta+"deg); \
+    -ms-transform: rotate("+theta+"deg); \
+    -o-transform: rotate("+theta+"deg); \
+    transform: rotate("+theta+"deg); \
+    ";
+
+    links[link - 1].style.cssText = jointcss;
 }
 
 /********************************************************************* RESOURCES
