@@ -313,4 +313,5 @@ function changeAngles(theta_1, theta_2, theta_3) {
     https://stackoverflow.com/questions/19574171/how-to-get-css-transform-rotation-value-in-degrees-with-javascript
     https://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/
     https://www.w3schools.com/jsref/event_onkeypress.asp
+    http://what-when-how.com/Tutorial/topic-666e35gsn/HTML5-Animation-with-JavaScript-321.html
 ************************************************************************/
